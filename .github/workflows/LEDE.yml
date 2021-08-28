@@ -14,8 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO: config/git
   CONFIG_FILE: config/.config
   Shell_1: sh/shell-1.sh
   UPLOAD_BIN_DIR: ture
@@ -46,7 +45,8 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git=$(head -n 1 $REPO)
+        git clone $git --single-branch openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 加载Shell-1脚本
