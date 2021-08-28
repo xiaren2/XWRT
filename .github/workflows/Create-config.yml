@@ -1,5 +1,5 @@
 
-name: Build config
+name: Create config
 
 on:
   workflow_dispatch:
@@ -7,7 +7,8 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  Shell: sh/shell.sh
+  Shell_1: sh/shell-1.sh
+  Shell_2: sh/shell-2.sh
 
 jobs:
   build:
@@ -33,18 +34,23 @@ jobs:
       run: |
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        
+    - name: 加载Shell-1脚本
+      run: |
+        chmod +x $Shell_1
+        cd openwrt
+        $GITHUB_WORKSPACE/$Shell_1
 
     - name: 更新 & 安装 插件源
       run: |
         cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        ./scripts/feeds update -a && ./scripts/feeds install -a
 
-    - name: 加载脚本
+    - name: 加载Shell-2脚本
       run: |
-        chmod +x $Shell
+        chmod +x $Shell_2
         cd openwrt
-        $GITHUB_WORKSPACE/$Shell
+        $GITHUB_WORKSPACE/$Shell_2
 
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
