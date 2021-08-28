@@ -42,7 +42,6 @@ jobs:
         sudo chown $USER:$GROUPS /workdir
 
     - name: 克隆源码
-      working-directory: /workdir
       run: |
         df -hT $PWD
         git=$(head -n 1 $REPO)
