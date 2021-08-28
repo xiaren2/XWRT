@@ -17,6 +17,7 @@ env:
   REPO: config/git
   CONFIG_FILE: config/LEDE.config
   Shell_1: sh/shell-1.sh
+  Shell_2: sh/shell-2.sh
   UPLOAD_BIN_DIR: ture
   UPLOAD_FIRMWARE: false
 
