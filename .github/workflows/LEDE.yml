@@ -16,7 +16,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: config/CR660X.config
+  CONFIG_FILE: config/.config
   Shell: sh/shell.sh
   UPLOAD_BIN_DIR: ture
   UPLOAD_FIRMWARE: false
