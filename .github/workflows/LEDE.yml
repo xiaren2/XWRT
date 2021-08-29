@@ -72,7 +72,7 @@ jobs:
         make -j8 || make -j1 V=sc
 
     - name: 上传bin目录(包含插件与固件)
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@v2
       with:
         name: OpenWrt_bin
         path: openwrt/bin
