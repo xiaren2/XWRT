@@ -35,7 +35,6 @@ jobs:
 
     - name: 克隆源码
       run: |
-        df -hT $PWD
         git=$(head -n 1 $REPO)
         git clone $git --single-branch openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
