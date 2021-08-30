@@ -8,7 +8,7 @@ on:
 
 env:
   REPO: config/git
-  CONFIG_FILE: config/LEDE.config
+  CONFIG_FILE: config/A.config
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
 
