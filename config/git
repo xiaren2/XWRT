@@ -1,4 +1,4 @@
-https://github.com/x-wrt/x-wrt -b master
+https://github.com/Lienol/openwrt -b 19.07
 
 
 https://github.com/coolsnowwolf/lede -b master
