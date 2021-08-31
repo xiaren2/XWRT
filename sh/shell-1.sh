@@ -12,7 +12,6 @@ elif [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/default-settings/files/zzz-default-settings
 else
 	sed -i 's#%D#&/NueXini#g' package/base-files/files/etc/openwrt_release
-	sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' /etc/opkg/distfeeds.conf
 fi
 ###
 
