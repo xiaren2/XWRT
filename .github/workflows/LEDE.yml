@@ -50,13 +50,6 @@ jobs:
         chmod +x $Shell_2
         cd nuexini
         $GITHUB_WORKSPACE/$Shell_2
-
-    - name: 下载dl库
-      run: |
-        cd nuexini
-        make defconfig
-        make download -j8 V=s
-        rm -rf $(find ./dl/ -size -1024c)
         
     - name: 安装UPX
       run: |
@@ -65,6 +58,13 @@ jobs:
         ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
         chmod +x ./staging_dir/host/bin/upx
         chmod +x ./staging_dir/host/bin/upx-ucl
+        
+    - name: 下载dl库
+      run: |
+        cd nuexini
+        make defconfig
+        make download -j8 V=s
+        rm -rf $(find ./dl/ -size -1024c)
 
     - name: 编译固件
       run: |
