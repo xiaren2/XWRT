@@ -33,8 +33,8 @@ jobs:
         git=$(head -n 1 $REPO)
         git clone $git --single-branch nuexini
         ##### 加载UPX
-        ln -s /usr/bin/upx nuexini/staging_dir/host/bin/
-        ln -s /usr/bin/upx-ucl nuexini/staging_dir/host/bin/
+        ln -s /usr/bin/upx nuexini/staging_dir/host/bin/upx
+        ln -s /usr/bin/upx-ucl nuexini/staging_dir/host/bin/upx-ucl
         chmod +x nuexini/staging_dir/host/bin/upx
         chmod +x nuexini/staging_dir/host/bin/upx-ucl
 
