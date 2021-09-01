@@ -32,13 +32,15 @@ jobs:
       run: |
         git=$(head -n 1 $REPO)
         git clone $git --single-branch nuexini
-        ##### 加载UPX
+        
+    - name: 安装UPX
+      run: |
         cd nuexini
         ln -s /usr/bin/upx ./staging_dir/host/bin/upx
         ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
-        #chmod +x ./staging_dir/host/bin/upx
-        #chmod +x ./staging_dir/host/bin/upx-ucl
-
+        chmod +x ./staging_dir/host/bin/upx
+        chmod +x ./staging_dir/host/bin/upx-ucl
+    
     - name: 加载Shell-1脚本
       run: |
         chmod +x $Shell_1
