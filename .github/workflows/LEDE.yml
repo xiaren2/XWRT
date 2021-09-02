@@ -55,13 +55,13 @@ jobs:
       run: |
         cd nuexini
         make defconfig
-        make download -j8 V=s
+        make download -j8
         rm -rf $(find ./dl/ -size -1024c)
 
     - name: 编译固件
       run: |
         cd nuexini
-        make -j$(nproc) || make -j1 V=sc
+        make -j8 || make -j1 V=sc
 
     - name: 上传bin目录(包含插件与固件)
       uses: actions/upload-artifact@v2
