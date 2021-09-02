@@ -8,7 +8,7 @@ env:
   REPO: config/git
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
-  CONFIG_FILE: config/AA.config
+  CONFIG_FILE: config/A.config
 
 jobs:
   build:
@@ -53,11 +53,6 @@ jobs:
 
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
-
-    - name: Make defconfig
-      run: |
-        cd dd
-        make defconfig
 
     - name: 上传config
       uses: actions/upload-artifact@v2
