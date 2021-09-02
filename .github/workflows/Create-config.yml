@@ -8,6 +8,7 @@ env:
   REPO: config/git
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
+  CONFIG_FILE: config/A.config
 
 jobs:
   build:
@@ -45,6 +46,7 @@ jobs:
 
     - name: 加载Shell-2脚本
       run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE nuexini/.config
         chmod +x $Shell_2
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
