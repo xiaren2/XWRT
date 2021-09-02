@@ -54,6 +54,7 @@ jobs:
     - name: 下载dl库
       run: |
         cd nuexini
+        cat defconfig > .config
         make download -j8
         rm -rf $(find ./dl/ -size -1024c)
 
