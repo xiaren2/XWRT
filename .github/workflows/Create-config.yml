@@ -8,7 +8,7 @@ env:
   REPO: config/git
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
-  CONFIG_FILE: config/A.config
+  CONFIG_FILE: config/AA.config
 
 jobs:
   build:
