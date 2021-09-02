@@ -46,7 +46,7 @@ jobs:
 
     - name: 加载Shell-2脚本
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE nuexini/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE dd/.config
         chmod +x $Shell_2
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
@@ -54,7 +54,7 @@ jobs:
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
 
-    - name: 加载Shell-2脚本
+    - name: Make defconfig
       run: |
         cd dd
         make defconfig
