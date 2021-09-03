@@ -7,6 +7,5 @@ ln -s /usr/bin/upx ./staging_dir/host/bin/upx
 ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
 
 # 
-#rm -rf feeds/NueXini_Packages/luci-app-turboacc
-#rm -rf feeds/NueXini_Packages/shortcut-fe
-mv -f feeds/NueXini_Packages/shortcut-fe package/kernel/
+rm -rf feeds/NueXini_Packages/luci-app-turboacc
+rm -rf feeds/NueXini_Packages/shortcut-fe
