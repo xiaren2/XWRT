@@ -53,12 +53,19 @@ jobs:
 
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
+      
+    - name: 整理文件
+      run: |
+        cd dd
+        mkdir -p ./nuexini
+        cp -rf ./.config ./nuexini/
+        cp -rf ./bin ./nuexini/
 
-    - name: 上传config
+    - name: 上传文件
       uses: actions/upload-artifact@v2
       with:
         name: config
-        path: dd/.config
+        path: dd/nuexini
 
 ##
 #
