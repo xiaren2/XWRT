@@ -19,8 +19,8 @@ fi
 ###
 
 # 删除lean libcryptopp
-if [ -d "package/lean/libcryptopp" ]; then
-	rm -rf package/lean/libcryptopp
+if [ -d "package/lean" ]; then
+	rm -rf package/lean
 fi
 ###
 
