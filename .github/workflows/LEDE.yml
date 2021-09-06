@@ -55,6 +55,7 @@ jobs:
       run: |
         cd nuexini
         make defconfig
+        make kernel_menuconfig
         make download -j8
         rm -rf $(find ./dl/ -size -1024c)
 
