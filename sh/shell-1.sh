@@ -11,7 +11,7 @@ sed -i 's/192.168.1.*.1/192.168.3.1/g' package/base-files/files/bin/config_gener
 # lean默认设置
 if [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/lean/default-settings/files/zzz-default-settings
-elif [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
+elif [ -f "package/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/default-settings/files/zzz-default-settings
 else
 	sed -i 's#%D#&/NueXini#g' package/base-files/files/etc/openwrt_release
