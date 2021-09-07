@@ -58,6 +58,7 @@ jobs:
     - name: 整理文件
       run: |
         cd dd
+        make defconfig
         mkdir -p ./nuexini
         cp -rf ./.config ./nuexini/
         if [ -d "./bin" ]; then
