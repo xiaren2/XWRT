@@ -1,4 +1,4 @@
-https://github.com/Lienol/openwrt -b main
+https://github.com/coolsnowwolf/lede -b master
 
 
 https://github.com/coolsnowwolf/lede -b master
