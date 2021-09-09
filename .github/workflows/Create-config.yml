@@ -50,7 +50,6 @@ jobs:
         chmod +x $Shell_2
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
-        make defconfig
 
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
