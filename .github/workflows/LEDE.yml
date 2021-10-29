@@ -62,9 +62,15 @@ jobs:
       run: |
         cd nuexini
         make -j8 || make -j1 V=sc
+    
+    - name: 上传固件
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Firmware
+        path: nuexini/bin/targets
 
     - name: 上传bin目录(包含插件与固件)
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.2.4
       with:
         name: Bin
         path: nuexini/bin
