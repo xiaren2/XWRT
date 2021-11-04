@@ -14,7 +14,7 @@ if [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
 elif [ -f "package/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/default-settings/files/zzz-default-settings
 else
-	sed -i 's# %V # NueXini #g' package/base-files/files/etc/openwrt_release
+	sed -i 's# %C # NueXini #g' package/base-files/files/etc/openwrt_release
 fi
 ###
 
