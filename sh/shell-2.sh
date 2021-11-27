@@ -11,5 +11,7 @@ ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
 rm -rf feeds/NueXini_Packages/luci-app-turboacc
 rm -rf feeds/NueXini_Packages/shortcut-fe
 
-# x-wrt luci.main.lang='auto'
-sed -i "s#luci.main.lang='auto'#luci.main.lang='zh_cn'#g" feeds/x/base-config-setting/files/uci.defaults
+# x-wrt
+if [ -d "feeds/x" ]; then
+	sed -i "s#luci.main.lang='auto'#luci.main.lang='zh_cn'#g" feeds/x/base-config-setting/files/uci.defaults
+fi
