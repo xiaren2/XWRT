@@ -14,4 +14,5 @@ rm -rf feeds/NueXini_Packages/shortcut-fe
 # x-wrt
 if [ -d "feeds/x" ]; then
 	sed -i "s#luci.main.lang='auto'#luci.main.lang='zh_cn'#g" feeds/x/base-config-setting/files/uci.defaults
+	sed -i 's/-hidden//g' feeds/luci/applications/luci-app-opkg/root/usr/share/luci/menu.d/luci-app-opkg.json
 fi
