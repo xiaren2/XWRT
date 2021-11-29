@@ -3,13 +3,11 @@
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 sed -i 's/+luci-theme-bootstrap //g' feeds/luci/collections/luci/Makefile
 
+
 # 安装UPX
 ln -s /usr/bin/upx ./staging_dir/host/bin/upx
 ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
 
-# 
-rm -rf feeds/NueXini_Packages/luci-app-turboacc
-rm -rf feeds/NueXini_Packages/shortcut-fe
 
 # x-wrt
 if [ -d "feeds/x" ]; then
@@ -19,3 +17,4 @@ if [ -d "feeds/x" ]; then
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
 	sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' include/version.mk
 fi
+
