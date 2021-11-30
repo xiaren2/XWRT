@@ -9,6 +9,7 @@ env:
   CONFIG_FILE: config/A.config
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
+  Shell_3: sh/language_fix.sh
 
 jobs:
   build:
@@ -48,8 +49,11 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE nuexini/.config
         chmod +x $Shell_2
+        chmod +x $Shell_3
         cd nuexini
         $GITHUB_WORKSPACE/$Shell_2
+        $GITHUB_WORKSPACE/$Shell_3
+        
         
     - name: 下载dl库
       run: |
