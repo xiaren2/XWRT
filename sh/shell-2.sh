@@ -18,6 +18,7 @@ if [ -d "feeds/x" ]; then
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
 	sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' include/version.mk
-	
+	cd feeds/NueXini_Packages
+	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | sudo bash
 fi
 
