@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # 设置luci-theme-argon为默认主题
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
@@ -19,6 +20,6 @@ if [ -d "feeds/x" ]; then
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
 	sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' include/version.mk
 	cd feeds/NueXini_Packages
-	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/NueXini_Language_Fix.sh | /bin/bash
 fi
 
