@@ -9,5 +9,6 @@ for a in ${PATH_1}
 do
     PATH_2="$({ dirname $a; } 2>"/dev/null")"
     PATH_3="$PATH_2/zh_Hans"
-    ln -s ${a} ${PATH_3}
+    #ln -s ${a} ${PATH_3}
+    ln -s zh-cn ${PATH_3}
 done
