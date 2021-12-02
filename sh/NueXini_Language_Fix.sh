@@ -8,5 +8,5 @@ PATH_2="$({ dirname $PATH_1; } 2>"/dev/null")"
 
 for a in ${PATH_1}
 do
-    ln -s ${PATH_1} ${PATH_2}/zh_Hans
+    ln -s ${PATH_1} "${PATH_2}/zh_Hans"
 done
