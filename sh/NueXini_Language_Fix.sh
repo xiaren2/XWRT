@@ -2,11 +2,12 @@
 # Create By NueXini
 
 cd feeds/NueXini_Packages
-PATH_1="$({ find -type d|grep "zh-cn"; } 2>"/dev/null")"
-PATH_2="$({ dirname $PATH_1; } 2>"/dev/null")"
 
+PATH_1="$({ find -type d|grep "zh-cn"; } 2>"/dev/null")"
 
 for a in ${PATH_1}
 do
-    ln -s ${PATH_1} "${PATH_2}/zh_Hans"
+    PATH_2="$({ dirname $a; } 2>"/dev/null")"
+    PATH_3="$PATH_2/zh_Hans"
+    ln -s ${a} ${PATH_3}
 done
