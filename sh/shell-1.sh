@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # 替换dl mirror
 sed -i 's#mirror2.openwrt.org/sources#github.com/NueXini/Update_NueXini_Packages/raw/master/other#g' scripts/download.pl
