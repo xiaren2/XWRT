@@ -53,7 +53,13 @@ jobs:
         cd nuexini
         $GITHUB_WORKSPACE/$Shell_2
         
-        
+    - name: 输出调试信息
+      run: |
+        cd nuexini
+        cat feeds/x/base-config-setting/files/uci.defaults
+        cat package/base-files/files/etc/banner
+        cat feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+
     - name: 下载dl库
       run: |
         cd nuexini
