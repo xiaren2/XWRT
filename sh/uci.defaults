@@ -1,4 +1,6 @@
 
 sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' /etc/opkg/distfeeds.conf
+
+
 exit 0
 
