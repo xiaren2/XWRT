@@ -52,6 +52,16 @@ jobs:
         chmod +x $Shell_2
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
+        
+    - name: 输出调试信息
+      run: |
+        cd nuexini
+        cat feeds/x/base-config-setting/files/uci.defaults
+        echo '=========================NueXini=========================='
+        cat package/base-files/files/etc/banner
+        echo '=========================NueXini=========================='
+        cat feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+        echo '=========================NueXini=========================='
 
     - name: SSH连接
       uses: P3TERX/ssh2actions@v1.0.0
