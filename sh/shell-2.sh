@@ -21,11 +21,13 @@ if [ -d "feeds/x" ]; then
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
 	
-	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/uci.sh | /bin/bash
+	#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/uci.sh | /bin/bash
+	$GITHUB_WORKSPACE/sh/uci.sh
 	
 	cp -f $GITHUB_WORKSPACE/sh/banner package/base-files/files/etc/banner
 	
 	cd feeds/NueXini_Packages
-	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	$GITHUB_WORKSPACE/sh/language_fix.sh
 fi
 
