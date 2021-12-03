@@ -7,6 +7,7 @@ on:
 env:
   REPO: config/git
   CONFIG_FILE: config/A.config
+  Shell_0: sh
   Shell_1: sh/shell-1.sh
   Shell_2: sh/shell-2.sh
 
@@ -35,6 +36,7 @@ jobs:
         
     - name: 加载Shell-1脚本
       run: |
+        chmod +x $GITHUB_WORKSPACE/$Shell_0/*.sh
         chmod +x $Shell_1
         cd dd
         $GITHUB_WORKSPACE/$Shell_1
