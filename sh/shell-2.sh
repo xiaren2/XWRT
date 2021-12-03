@@ -13,13 +13,20 @@ ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
 # x-wrt
 if [ -d "feeds/x" ]; then
 	sed -i "s#luci.main.lang='auto'#luci.main.lang='zh_Hans'#g" feeds/x/base-config-setting/files/uci.defaults
+	
 	sed -i "s#PasswordAuth='off'#PasswordAuth='on'#g" feeds/x/base-config-setting/files/uci.defaults
 	sed -i "s#RootPasswordAuth='off'#RootPasswordAuth='on'#g" feeds/x/base-config-setting/files/uci.defaults
+	
 	sed -i 's/-hidden//g' feeds/luci/applications/luci-app-opkg/root/usr/share/luci/menu.d/luci-app-opkg.json
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
+	
 	sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' include/version.mk
+	
+	cp -f $GITHUB_WORKSPACE/sh/banner package/base-files/files/etc/banner
+	
 	cd feeds/NueXini_Packages
-	curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	$GITHUB_WORKSPACE/sh/language_fix.sh
 fi
 
