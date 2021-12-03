@@ -4,11 +4,9 @@
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 sed -i 's/+luci-theme-bootstrap //g' feeds/luci/collections/luci/Makefile
 
-
 # 安装UPX
 ln -s /usr/bin/upx ./staging_dir/host/bin/upx
 ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
-
 
 # x-wrt
 if [ -d "feeds/x" ]; then
@@ -21,6 +19,9 @@ if [ -d "feeds/x" ]; then
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
 	sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/menu.d/luci-mod-status.json
 	
+	sed -i 's,/etc/config/wizard,,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+	sed -i 's,admin/initsetup,admin/status/overview,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+
 	#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/uci.sh | /bin/bash
 	$GITHUB_WORKSPACE/sh/uci.sh
 	
