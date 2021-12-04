@@ -1,7 +1,7 @@
 #!/bin/bash
 # Create By NueXini
 
-cd feeds/NueXini_Packages
+#cd feeds/NueXini_Packages
 
 PATH_1="$({ find -type d|grep "zh-cn"; } 2>"/dev/null")"
 
