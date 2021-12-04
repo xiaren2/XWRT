@@ -75,7 +75,7 @@ jobs:
         fi
 
     - name: 上传文件
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.2.4
       with:
         name: config
         path: dd/nuexini
