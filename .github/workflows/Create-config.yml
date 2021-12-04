@@ -37,7 +37,6 @@ jobs:
     - name: 加载Shell-1脚本
       run: |
         chmod +x $GITHUB_WORKSPACE/$Shell_0/*.sh
-        chmod +x $Shell_1
         cd dd
         $GITHUB_WORKSPACE/$Shell_1
 
@@ -49,7 +48,6 @@ jobs:
     - name: 加载Shell-2脚本
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE dd/.config
-        chmod +x $Shell_2
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
         
