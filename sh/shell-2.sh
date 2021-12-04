@@ -29,6 +29,7 @@ if [ -d "feeds/x" ]; then
 	
 	cd feeds/NueXini_Packages
 	#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+	$GITHUB_WORKSPACE/sh/NueXini_Language_Fix.sh
 	$GITHUB_WORKSPACE/sh/language_fix.sh
 fi
 
