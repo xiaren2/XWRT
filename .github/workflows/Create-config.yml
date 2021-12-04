@@ -55,7 +55,7 @@ jobs:
         
     - name: 输出调试信息
       run: |
-        cd nuexini
+        cd dd
         cat feeds/x/base-config-setting/files/uci.defaults
         echo '=========================NueXini=========================='
         cat package/base-files/files/etc/banner
