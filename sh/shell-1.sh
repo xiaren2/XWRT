@@ -14,14 +14,9 @@ sed -i 's,3.openwrt.pool.ntp.org,cn.ntp.org.cn,g' package/base-files/files/bin/c
 
 if [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/lean/default-settings/files/zzz-default-settings
+	rm -rf package/lean/libcryptopp
 elif [ -f "package/default-settings/files/zzz-default-settings" ]; then
 	sed -i "s#'OpenWrt#&/NueXini#g" package/default-settings/files/zzz-default-settings
 else
 	sed -i 's/%R/NueXini/g' package/base-files/files/etc/openwrt_release
 fi
-
-
-if [ -d "package/lean/libcryptopp" ]; then
-	rm -rf package/lean/libcryptopp
-fi
-
