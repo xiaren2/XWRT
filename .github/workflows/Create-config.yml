@@ -1,5 +1,5 @@
 
-name: Create config
+name: Hi NueXini
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2.3.5
 
-    - name: 环境部署
+    - name: BuildEnviroment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -29,29 +29,29 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
 
-    - name: 克隆仓库
+    - name: Clone
       run: |
         git=$(head -n 1 $REPO)
         git clone $git --single-branch dd
         
-    - name: 加载Shell-1脚本
+    - name: Hi No.1
       run: |
         chmod +x $GITHUB_WORKSPACE/$Shell_0/*.sh
         cd dd
         $GITHUB_WORKSPACE/$Shell_1
 
-    - name: 更新 & 安装 插件源
+    - name: Update && Install Feeds
       run: |
         cd dd
         ./scripts/feeds update -a && ./scripts/feeds install -a
 
-    - name: 加载Shell-2脚本
+    - name: Hi No.2
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE dd/.config
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
         
-    - name: 输出调试信息
+    - name: Echo Mine
       run: |
         cd dd
         cat feeds/x/base-config-setting/files/uci.defaults
@@ -61,10 +61,10 @@ jobs:
         cat feeds/luci/modules/luci-base/luasrc/dispatcher.lua
         echo '=========================NueXini=========================='
 
-    - name: SSH连接
+    - name: For SSH
       uses: P3TERX/ssh2actions@v1.0.0
       
-    - name: 整理文件
+    - name: Preparation
       run: |
         cd dd
         make defconfig
@@ -74,7 +74,7 @@ jobs:
                 cp -rf ./bin ./nuexini/
         fi
 
-    - name: 上传文件
+    - name: Last thing
       uses: actions/upload-artifact@v2.2.4
       with:
         name: config
