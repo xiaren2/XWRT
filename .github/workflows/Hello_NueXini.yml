@@ -45,7 +45,6 @@ jobs:
     - name: Hi No.2
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE nuexini/.config
-        chmod +x $Shell_2
         cd nuexini
         $GITHUB_WORKSPACE/sh/shell-2.sh
 
