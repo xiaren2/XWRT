@@ -2,7 +2,7 @@
 # Create By NueXini
 
 #sed -i 's,admin/initsetup,d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
-sed -i 's,/etc/config/wizard,,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+sed -i 's?fs.access(\"/etc/config/wizard\") and ??g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 sed -i 's,admin/initsetup,admin/status/overview,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 
 sed -i 's/-hidden//g' feeds/luci/applications/luci-app-opkg/root/usr/share/luci/menu.d/luci-app-opkg.json
@@ -16,7 +16,6 @@ sed -i "s#RootPasswordAuth='off'#RootPasswordAuth='on'#g" feeds/x/base-config-se
 
 
 sed -i '/exit 0/d' feeds/x/base-config-setting/files/uci.defaults
-
 cat $GITHUB_WORKSPACE/sh/uci.defaults | while read line
 do
     echo $line >> feeds/x/base-config-setting/files/uci.defaults
