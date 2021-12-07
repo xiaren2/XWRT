@@ -51,23 +51,12 @@ jobs:
         cd dd
         $GITHUB_WORKSPACE/$Shell_2
         
-    - name: Echo Mine
-      run: |
-        cd dd
-        cat feeds/x/base-config-setting/files/uci.defaults
-        echo '=========================NueXini=========================='
-        cat package/base-files/files/etc/banner
-        echo '=========================NueXini=========================='
-        cat feeds/luci/modules/luci-base/luasrc/dispatcher.lua
-        echo '=========================NueXini=========================='
-
-    - name: For SSH
+    - name: Hi NueXini
       uses: P3TERX/ssh2actions@v1.0.0
       
     - name: Preparation
       run: |
         cd dd
-        make defconfig
         mkdir -p ./nuexini
         cp -rf ./.config ./nuexini/
         if [ -d "./bin" ]; then
