@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create By NueXini
 
-#sed -i 's,admin/initsetup,d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
-sed -i 's?fs.access(\"/etc/config/wizard\") and ??g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
-sed -i 's,admin/initsetup,admin/status/overview,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+sed -i 's,admin/initsetup,d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+#sed -i 's?fs.access(\"/etc/config/wizard\") and ??g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+#sed -i 's,admin/initsetup,admin/status/overview,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 
 sed -i 's/-hidden//g' feeds/luci/applications/luci-app-opkg/root/usr/share/luci/menu.d/luci-app-opkg.json
 sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
