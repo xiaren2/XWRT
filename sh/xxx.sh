@@ -1,7 +1,7 @@
 #!/bin/bash
 # Create By NueXini
 
-sed -i 's,admin/initsetup,d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
+sed -i '/admin\/initsetup/d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 #sed -i 's?fs.access(\"/etc/config/wizard\") and ??g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 #sed -i 's,admin/initsetup,admin/status/overview,g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 
