@@ -1,4 +1,9 @@
 
+ln -sf /sbin/ip /usr/bin/ip
+
+sed -i '/log-facility/d' /etc/dnsmasq.conf
+echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
+
 sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' /etc/opkg/distfeeds.conf
 
 rm -rf /tmp/luci-modulecache/
