@@ -31,10 +31,10 @@ jobs:
       run: |
         chmod +x $GITHUB_WORKSPACE/sh/*.sh
         cd nuexini
-        $GITHUB_WORKSPACE/sh/shell-1.sh
+        $GITHUB_WORKSPACE/sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
         [ -e $GITHUB_WORKSPACE/config/.config ] && mv $CONFIG_FILE ./.config
-        $GITHUB_WORKSPACE/sh/shell-2.sh
+        $GITHUB_WORKSPACE/sh/Hi_NueXini.sh
       
     - name: Download
       run: |
