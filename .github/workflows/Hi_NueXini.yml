@@ -4,13 +4,6 @@ name: Hi NueXini
 on:
   workflow_dispatch:
 
-env:
-  REPO: config/git
-  CONFIG_FILE: config/A.config
-  Shell_0: sh
-  Shell_1: sh/shell-1.sh
-  Shell_2: sh/shell-2.sh
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,32 +17,24 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/.github/workflows/BuildEnviroment)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(curl -fsSL https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/.github/workflows/BuildEnviroment)
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
 
     - name: Clone
       run: |
-        git=$(head -n 1 $REPO)
-        git clone $git --single-branch dd
+        releasetag=$(cat $GITHUB_WORKSPACE/config/releasetag | awk 'NR==1')
+        git clone $releasetag dd
         
-    - name: Hi No.1
+    - name: Update & Install feeds
       run: |
-        chmod +x $GITHUB_WORKSPACE/$Shell_0/*.sh
+        chmod +x $GITHUB_WORKSPACE/sh/*.sh
         cd dd
-        $GITHUB_WORKSPACE/$Shell_1
-
-    - name: Update && Install Feeds
-      run: |
-        cd dd
+        $GITHUB_WORKSPACE/sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-
-    - name: Hi No.2
-      run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE dd/.config
-        cd dd
-        $GITHUB_WORKSPACE/$Shell_2
+        [ -e $GITHUB_WORKSPACE/config/.config ] && mv $CONFIG_FILE ./.config
+        $GITHUB_WORKSPACE/sh/Hi_NueXini.sh
         
     - name: Hi NueXini
       uses: P3TERX/ssh2actions@v1.0.0
