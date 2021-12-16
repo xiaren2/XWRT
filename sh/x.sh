@@ -1,6 +1,8 @@
 #!/bin/bash
 # Create By NueXini
 
+cp -f $GITHUB_WORKSPACE/sh/banner package/base-files/files/etc/banner
+
 sed -i 's,192.168.15,192.168.3,g' feeds/x/natflow/files/natflow.config
 
 #sed -i '/admin\/initsetup/d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
@@ -24,4 +26,7 @@ do
 done
 
 
+cd feeds/NueXini_Packages
+#curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
+$GITHUB_WORKSPACE/sh/language_fix.sh
 
