@@ -31,7 +31,7 @@ jobs:
       run: |
         chmod +x ./sh/*.sh
         cd dd
-        ./sh/Hello_NueXini.sh
+        ../sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
         [ -e ../config/.config ] && mv ../config/.config ./.config
         ../sh/Hi_NueXini.sh
@@ -54,5 +54,5 @@ jobs:
         name: config
         path: dd/nuexini
 
-##
-#
+##### $GITHUB_WORKSPACE ######
+###### ###### ###### ###### ###### 
