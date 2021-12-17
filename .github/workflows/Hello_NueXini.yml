@@ -24,17 +24,17 @@ jobs:
 
     - name: Hello World
       run: |
-        releasetag=$(cat $GITHUB_WORKSPACE/config/releasetag | awk 'NR==1')
+        releasetag=$(cat ./config/releasetag | awk 'NR==1')
         git clone $releasetag nuexini
 
     - name: Update & Install feeds
       run: |
-        chmod +x $GITHUB_WORKSPACE/sh/*.sh
+        chmod +x ./sh/*.sh
         cd nuexini
-        $GITHUB_WORKSPACE/sh/Hello_NueXini.sh
+        ../sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e $GITHUB_WORKSPACE/config/.config ] && mv $GITHUB_WORKSPACE/config/.config ./.config
-        $GITHUB_WORKSPACE/sh/Hi_NueXini.sh
+        [ -e ../config/.config ] && mv ../config/.config ./.config
+        ../sh/Hi_NueXini.sh
       
     - name: Download
       run: |
@@ -60,5 +60,5 @@ jobs:
         name: Bin
         path: nuexini/bin
 
-#####
-######
+##### $GITHUB_WORKSPACE ######
+###### ###### ###### ###### ###### 
