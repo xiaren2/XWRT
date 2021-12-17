@@ -33,7 +33,7 @@ jobs:
         cd dd
         $GITHUB_WORKSPACE/sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e $GITHUB_WORKSPACE/config/.config ] && mv $CONFIG_FILE ./.config
+        [ -e $GITHUB_WORKSPACE/config/.config ] && mv $GITHUB_WORKSPACE/config/.config ./.config
         $GITHUB_WORKSPACE/sh/Hi_NueXini.sh
         
     - name: Hi NueXini
