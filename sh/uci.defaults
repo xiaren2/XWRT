@@ -14,6 +14,8 @@ echo '[ -n "$(command -v ip6tables)" ] && ip6tables -t nat -A PREROUTING -p udp 
 echo '[ -n "$(command -v ip6tables)" ] && ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
 
 sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' /etc/opkg/distfeeds.conf
+sed -i '/NueXini_Packages/d' /etc/opkg/distfeeds.conf
+
 
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
