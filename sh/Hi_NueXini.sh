@@ -9,6 +9,5 @@ ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
 
 if [ -d "feeds/x" ]; then
 	$GITHUB_WORKSPACE/sh/x.sh
-	
 fi
 
