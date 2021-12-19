@@ -5,7 +5,7 @@ cp -f $GITHUB_WORKSPACE/sh/banner package/base-files/files/etc/banner
 
 sed -i 's,192.168.15,192.168.3,g' feeds/x/natflow/files/natflow.config
 
-sed -i 's#/bootstrap#/argon-2102#g' feeds/x/base-config-setting/files/uci.defaults
+sed -i 's#/bootstrap#/argon#g' feeds/x/base-config-setting/files/uci.defaults
 
 #sed -i '/admin\/initsetup/d' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
 sed -i 's?fs.access(\"/etc/config/wizard\") and ??g' feeds/luci/modules/luci-base/luasrc/dispatcher.lua
@@ -26,7 +26,6 @@ cat $GITHUB_WORKSPACE/sh/uci.defaults | while read line
 do
     echo $line >> feeds/x/base-config-setting/files/uci.defaults
 done
-
 
 cd feeds/NueXini_Packages
 #curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
