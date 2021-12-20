@@ -59,6 +59,12 @@ jobs:
       with:
         name: Bin
         path: nuexini/bin
+        
+     - name: Hello NueXini
+       run: |
+         curl -fsSL git.io/cowtransfer | sh
+         ./cowtransfer-uploader -s -p 8 nuexini/bin 2>&1 | tee cowtransfer.log
+         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
 ##### $GITHUB_WORKSPACE ######
 ###### ###### ###### ###### ###### 
