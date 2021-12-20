@@ -6,6 +6,9 @@
 uci set natcapd.default.peer_sni_ban='1'
 uci commit natcapd
 
+uci set dropbear.@dropbear[0].Interface='lan'
+uci commit dropbear
+
 ln -sf /sbin/ip /usr/bin/ip
 
 sed -i '/log-facility/d' /etc/dnsmasq.conf
