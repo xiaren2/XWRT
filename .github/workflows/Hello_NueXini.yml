@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2.3.5
+      uses: actions/checkout@v2.4.0
 
     - name: Initialization
       env:
@@ -49,13 +49,13 @@ jobs:
         make -j8 || make -j1 V=sc
     
     - name: One more thing
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: Firmware
         path: nuexini/bin/targets
 
     - name: Last thing
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: Bin
         path: nuexini/bin
