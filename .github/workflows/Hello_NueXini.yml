@@ -57,13 +57,14 @@ jobs:
     - name: Last thing
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: Bin
-        path: nuexini/bin
+        name: Packages
+        path: nuexini/bin/packages
         
     - name: Hello NueXini
       run: |
+        zip -q -r Bin-NueXini.zip nuexini/bin
         curl -fsSL git.io/cowtransfer | sh
-        ./cowtransfer-uploader -s -p 8 nuexini/bin 2>&1 | tee cowtransfer.log
+        ./cowtransfer-uploader -s -p 64 Bin-NueXini.zip 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
 ##### $GITHUB_WORKSPACE ######
