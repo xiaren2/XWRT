@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2.3.5
+      uses: actions/checkout@v2.4.0
 
     - name: BuildEnviroment
       env:
@@ -49,10 +49,17 @@ jobs:
         fi
 
     - name: Last thing
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: config
         path: dd/nuexini
+        
+    - name: Hi NueXini
+      run: |
+        curl -fsSL git.io/cowtransfer | sh
+        ./cowtransfer-uploader -s -p 8 dd/config.zip 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        
 
 ##### $GITHUB_WORKSPACE ######
 ###### ###### ###### ###### ###### 
