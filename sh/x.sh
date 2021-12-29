@@ -17,7 +17,7 @@ sed -i 's/-hidden//g' feeds/luci/modules/luci-mod-status/root/usr/share/luci/men
 
 sed -i "s#luci.main.lang='auto'#luci.main.lang='zh_cn'#g" feeds/x/base-config-setting/files/uci.defaults
 
-sed -i "s#anon_mount='0'#anon_mount='1'#g" feeds/x/base-config-setting/files/uci.defaults
+# sed -i "s#anon_mount='0'#anon_mount='1'#g" feeds/x/base-config-setting/files/uci.defaults
 
 sed -i "s#PasswordAuth='off'#PasswordAuth='on'#g" feeds/x/base-config-setting/files/uci.defaults
 sed -i "s#RootPasswordAuth='off'#RootPasswordAuth='on'#g" feeds/x/base-config-setting/files/uci.defaults
