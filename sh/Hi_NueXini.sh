@@ -6,8 +6,8 @@ sed -i 's/+luci-theme-bootstrap //g' feeds/luci/collections/luci/Makefile
 sed -i 's/192.168.1.*.1/192.168.3.1/g' feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/flash.js
 
 sed -i '/luciversion/d' feeds/luci/modules/luci-base/src/mkversion.sh
-sed -i '/luciname/aluciversion = "compile on $(TZ=UTC+11 date "+%Y-%m-%d") by NueXini"' feeds/luci/modules/luci-base/src/mkversion.sh
-
+#sed -i '/luciname/aluciversion = "compile on $(TZ=UTC+11 date "+%Y-%m-%d") by NueXini"' feeds/luci/modules/luci-base/src/mkversion.sh
+sed -i '/luciname/aluciversion = "compile on 2022-01-01 by NueXini"' feeds/luci/modules/luci-base/src/mkversion.sh
 
 ln -s /usr/bin/upx ./staging_dir/host/bin/upx
 ln -s /usr/bin/upx-ucl ./staging_dir/host/bin/upx-ucl
