@@ -44,6 +44,7 @@ sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/openwrt#g' /etc/opkg/d
 sed -i '/NueXini_Packages/d' /etc/opkg/distfeeds.conf
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
 
+echo 'hsts=0' > /root/.wgetrc
 
 rm /etc/adv_luci_disabled
 rm -rf /tmp/luci-modulecache/
