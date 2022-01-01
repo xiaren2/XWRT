@@ -3,6 +3,19 @@
 # uci commit dhcp
 # /etc/init.d/odhcpd disable
 
+uci set nft-qos.default.limit_enable='0'
+uci del nft-qos.default.limit_type
+uci del nft-qos.default.static_rate_dl
+uci del nft-qos.default.static_unit_dl
+uci del nft-qos.default.static_rate_ul
+uci del nft-qos.default.static_unit_ul
+uci del nft-qos.default.dynamic_bw_down
+uci del nft-qos.default.dynamic_bw_up
+uci del nft-qos.default.dynamic_cidr
+uci del nft-qos.default.dynamic_cidr6
+uci del nft-qos.default.priority_netdev
+uci commit nft-qos
+
 uci set natcapd.default.peer_sni_ban='1'
 uci commit natcapd
 
