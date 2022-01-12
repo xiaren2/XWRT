@@ -12,12 +12,5 @@ sed -i 's,1.openwrt.pool.ntp.org,ntp1.aliyun.com,g' package/base-files/files/bin
 sed -i 's,2.openwrt.pool.ntp.org,ntp.ntsc.ac.cn,g' package/base-files/files/bin/config_generate
 sed -i 's,3.openwrt.pool.ntp.org,cn.ntp.org.cn,g' package/base-files/files/bin/config_generate
 
+exit 0
 
-if [ -f "package/lean/default-settings/files/zzz-default-settings" ]; then
-	sed -i "s#'OpenWrt#&/NueXini#g" package/lean/default-settings/files/zzz-default-settings
-	rm -rf package/lean/libcryptopp
-elif [ -f "package/default-settings/files/zzz-default-settings" ]; then
-	sed -i "s#'OpenWrt#&/NueXini#g" package/default-settings/files/zzz-default-settings
-else
-	sed -i 's/%R/NueXini/g' package/base-files/files/etc/openwrt_release
-fi
