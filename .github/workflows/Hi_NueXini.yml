@@ -44,11 +44,6 @@ jobs:
         
     - name: Hi NueXini
       uses: rdp-studio/ssh2actions@v2.0.0
-      with:
-        mode: ngrok
-      env:
-        SSH_PASSWORD: 'nuexini'
-        NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
       
     - name: Preparation
       run: |
@@ -67,3 +62,10 @@ jobs:
 
 ##### $GITHUB_WORKSPACE ######
 ###### ###### ###### ###### ###### 
+#    - name: Hi NueXini
+#      uses: rdp-studio/ssh2actions@v2.0.0
+#      with:
+#        mode: ngrok
+#      env:
+#        SSH_PASSWORD: 'nuexini'
+#        NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
