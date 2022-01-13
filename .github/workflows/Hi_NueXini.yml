@@ -38,7 +38,9 @@ jobs:
         ../sh/Hi_NueXini.sh
         
     - name: Hi NueXini
-      uses: P3TERX/ssh2actions@v1.0.0
+      uses: rdp-studio@v2.0.0
+      with:
+        mode: ngrok
       
     - name: Preparation
       run: |
