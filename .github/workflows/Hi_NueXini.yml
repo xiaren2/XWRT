@@ -43,7 +43,7 @@ jobs:
         ../sh/Hi_NueXini.sh
         
     - name: Hi NueXini
-      uses: rdp-studio@v2.0.0
+      uses: rdp-studio/ssh2actions@v2.0.0
       with:
         mode: ngrok
       
