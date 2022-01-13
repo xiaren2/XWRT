@@ -3,6 +3,11 @@ name: Hello NueXini
 
 on:
   workflow_dispatch:
+    inputs:
+      config:
+        description: 'Configuration File'
+        required: true
+        default: '.config'
 
 jobs:
   build:
@@ -34,7 +39,7 @@ jobs:
         cd nuexini
         ../sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e ../config/.config ] && mv ../config/.config ./.config
+        [ -e ../config/${{ github.event.inputs.config }} ] && mv ../config/${{ github.event.inputs.config }} ./.config
         ../sh/Hi_NueXini.sh
       
     - name: Download
