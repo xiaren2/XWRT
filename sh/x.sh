@@ -1,6 +1,10 @@
 #!/bin/bash
 # Create By NueXini
 
+CONFIG_VERSION_VER_NX=$(cat feeds/x/rom/lede/buildinfo.conf | grep  'CONFIG_VERSION_VER' | cut -d '=' -f 2)
+CONFIG_VERSION_NUMBER_NX="${CONFIG_VERSION_VER_NX}_b$(TZ=UTC-8 date "+%Y%m%d%H%M")"
+sed -i "s/CONFIG_VERSION_NUMBER=\".*\"/CONFIG_VERSION_NUMBER=\"$CONFIG_VERSION_NUMBER_NX\"/" ./.config
+
 cp -f $GITHUB_WORKSPACE/sh/banner package/base-files/files/etc/banner
 
 sed -i 's,192.168.15,192.168.3,g' feeds/x/natflow/files/natflow.config
@@ -32,4 +36,7 @@ done
 cd feeds/NueXini_Packages
 #curl -s https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/sh/language_fix.sh | /bin/bash
 $GITHUB_WORKSPACE/sh/language_fix.sh
+
+exit 0
+
 
