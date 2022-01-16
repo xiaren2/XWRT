@@ -1,29 +1,10 @@
 
-# uci set dhcp.@dnsmasq[0].filter_aaaa='1'
-# uci commit dhcp
-# /etc/init.d/odhcpd disable
-
-
-# uci del ddns.myddns_ipv4
-# uci del ddns.global.upd_privateip
-# uci del ddns.myddns_ipv6
-# uci set ddns.global.ddns_rundir='/var/run/ddns'
-# uci set ddns.global.ddns_logdir='/var/log/ddns'
-# uci set ddns.myddns_ipv4.enabled='0'
-# uci commit ddns
-
-uci set nft-qos.default.limit_enable='0'
-uci del nft-qos.default.limit_type
-uci del nft-qos.default.static_rate_dl
-uci del nft-qos.default.static_unit_dl
-uci del nft-qos.default.static_rate_ul
-uci del nft-qos.default.static_unit_ul
-uci del nft-qos.default.dynamic_bw_down
-uci del nft-qos.default.dynamic_bw_up
-uci del nft-qos.default.dynamic_cidr
-uci del nft-qos.default.dynamic_cidr6
-uci del nft-qos.default.priority_netdev
-uci commit nft-qos
+# Disable ipv6
+# uci -q batch <<-EOF >/dev/null
+#         /etc/init.d/odhcpd disable
+#         uci set dhcp.@dnsmasq[0].filter_aaaa='1'
+#         uci commit dhcp
+# EOF
 
 uci set natcapd.default.peer_sni_ban='1'
 uci commit natcapd
