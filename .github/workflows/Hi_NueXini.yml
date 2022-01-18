@@ -39,7 +39,7 @@ jobs:
         cd dd
         ../sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e ../config/${{ github.event.inputs.config }} ] && mv ../config/${{ github.event.inputs.config }} ./.config
+        [ -e ../config/${{ github.event.inputs.config }} ] && cp -rf ../config/${{ github.event.inputs.config }} ./.config
         ../sh/Hi_NueXini.sh
         
     - name: Hi NueXini
