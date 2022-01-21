@@ -6,14 +6,7 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.config }}
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - config: 'R3G.config'
-          - config: 'R3.config'
     
     steps:
     - name: Checkout
