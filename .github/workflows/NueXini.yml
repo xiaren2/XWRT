@@ -24,8 +24,6 @@ jobs:
         
     - name: Build
       run: |
-        releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
-        git clone $releasetag nuexini
         chmod +x ./sh/*.sh
         sh ./sh/z.make.sh
         
@@ -33,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: Packages
-        path: nuexini/nuexini/
+        path: nuexini/bin/

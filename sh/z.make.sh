@@ -1,25 +1,38 @@
 #!/bin/bash
 
+# CONFIG_TARGET_ramips_mt7621=y
+# CONFIG_TARGET_ipq806x_generic=y
+# CONFIG_TARGET_ath79_generic=y
+# CONFIG_TARGET_bcm53xx_generic=y
+# CONFIG_TARGET_rockchip_armv8=y
+# CONFIG_TARGET_mvebu_cortexa53=y
+# CONFIG_TARGET_mvebu_cortexa9=y
+# CONFIG_TARGET_sunxi_cortexa7=y
+# CONFIG_TARGET_x86_64_DEVICE_generic=y
+
+cat << EOF > arch.cfg
+CONFIG_TARGET_ramips_mt7621=y
+EOF
+
+cat << EOF > app.cfg
+feeds/NueXini_Packages/luci-app-passwall
+EOF
+
+releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
+git clone $releasetag nuexini
+
 cd nuexini
 ../sh/Hello_NueXini.sh
-./scripts/feeds update -a && ./scripts/feeds install -a
+./scripts/feeds update -a
+./scripts/feeds install -a
+cp -rf ../arch.cfg ./.config
+../sh/Hi_NueXini.sh
 
-ls ../config | grep .config | while read conf
+cat ../app.cfg | while read app
 do
-    cp -rf ../config/$conf ./.config
-	../sh/Hi_NueXini.sh
-	make defconfig
-	make download -j8
-	rm -rf $(find ./dl/ -size -1024c)
-	make -j8 || make -j1 V=sc >> ./make.log 2>&1
+	make $app/compile V=s >> ./bin/make.log 2>&1
 done
 
-time=$(TZ=UTC-8 date "+%H%M")
-zip -q -r NueXini-$time.zip ./bin/
-../sh/z.cowtransfer.sh
-./cowtransfer-uploader -s -p 64 NueXini-$time.zip 2>&1 | tee cowtransfer.log
-cp -rf ./bin/ ./nuexini/
-echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
 # Creatr by NueXini
 
