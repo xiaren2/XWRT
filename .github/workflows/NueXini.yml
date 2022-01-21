@@ -27,6 +27,7 @@ jobs:
         releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
         git clone $releasetag nuexini
         chmod +x ./sh/*.sh
+        sh ./sh/z.make.sh
         
     - name: Upload
       uses: actions/upload-artifact@v2.3.1
