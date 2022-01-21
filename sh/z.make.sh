@@ -27,6 +27,7 @@ cd nuexini
 ./scripts/feeds install -a
 cp -rf ../arch.cfg ./.config
 ../sh/Hi_NueXini.sh
+make defconfig
 
 cat ../app.cfg | while read app
 do
