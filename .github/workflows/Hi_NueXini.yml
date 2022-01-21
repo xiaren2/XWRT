@@ -17,7 +17,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: BuildEnviroment
+    - name: Initialization
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -30,7 +30,7 @@ jobs:
 
     - name: Clone
       run: |
-        releasetag=$(cat ./config/releasetag | awk 'NR==1')
+        releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
         git clone $releasetag dd
         
     - name: Update & Install feeds

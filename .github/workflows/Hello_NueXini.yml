@@ -23,14 +23,13 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -y update
-        # sudo -E apt-get -y install $(curl -fsSL https://raw.githubusercontent.com/NueXini/BuildOpenWrt/master/.github/workflows/BuildEnviroment)
         sudo -E apt-get -y install $(cat ./.github/workflows/BuildEnviroment)
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get -y clean
 
-    - name: Hello World
+    - name: Clone
       run: |
-        releasetag=$(cat ./config/releasetag | awk 'NR==1')
+        releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
         git clone $releasetag nuexini
 
     - name: Update & Install feeds
@@ -39,7 +38,7 @@ jobs:
         cd nuexini
         ../sh/Hello_NueXini.sh
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e ../config/${{ github.event.inputs.config }} ] && mv ../config/${{ github.event.inputs.config }} ./.config
+        [ -e ../config/${{ github.event.inputs.config }} ] && cp -rf ../config/${{ github.event.inputs.config }} ./.config
         ../sh/Hi_NueXini.sh
       
     - name: Download
@@ -52,15 +51,22 @@ jobs:
     - name: Compile
       run: |
         cd nuexini
-        make -j8 || make -j1 V=sc
+        make -j8 || make -j1 V=sc >> ./make-error.log 2>&1
     
-    - name: One more thing
+    - name: Upload error log
+      uses: actions/upload-artifact@master
+      if: failure()
+      with:
+        name: build-failure-log
+        path: nuexini/make-error.log
+    
+    - name: Upload Firmware
       uses: actions/upload-artifact@v2.3.1
       with:
         name: Firmware
         path: nuexini/bin/targets
 
-    - name: Last thing
+    - name: Upload Packages
       uses: actions/upload-artifact@v2.3.1
       with:
         name: Packages
@@ -68,7 +74,7 @@ jobs:
         
     - name: Hello NueXini
       run: |
-        zip -q -r Bin-NueXini.zip ./nuexini/bin/
+        zip -q -r Bin-NueXini-$(TZ=UTC-8 date "+%H%M").zip ./nuexini/bin/
         ./sh/z.cowtransfer.sh
         ./cowtransfer-uploader -s -p 64 Bin-NueXini.zip 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"

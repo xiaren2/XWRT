@@ -1,0 +1,42 @@
+
+name: NueXini
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compile ${{ matrix.config }} Firmware
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - config: 'R3G.config'
+          - config: 'R3.config'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Initialization
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(cat ./.github/workflows/BuildEnviroment)
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
+        
+    - name: Build
+      run: |
+        releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
+        git clone $releasetag nuexini
+        chmod +x ./sh/*.sh
+        
+    - name: Upload
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: Packages
+        path: nuexini/nuexini/
