@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# CONFIG_TARGET_ramips_mt7621=y
+# CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=y
 # CONFIG_TARGET_ipq806x_generic=y
 # CONFIG_TARGET_ath79_generic=y
 # CONFIG_TARGET_bcm53xx_generic=y
@@ -11,7 +11,7 @@
 # CONFIG_TARGET_x86_64_DEVICE_generic=y
 
 cat << EOF > arch.cfg
-CONFIG_TARGET_ramips_mt7621=y
+CONFIG_TARGET_DEVICE_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=y
 EOF
 
 cat << EOF > app.cfg
