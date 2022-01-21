@@ -12,7 +12,7 @@ make -j8 || make -j1 V=sc >> ./nuexini/make.log 2>&1
 time=$(TZ=UTC-8 date "+%H%M")
 zip -q -r Bin-NueXini-$time.zip ./bin/
 ./sh/z.cowtransfer.sh
-./cowtransfer-uploader -s -p 64 Bin-NueXini.zip 2>&1 | tee cowtransfer.log
+./cowtransfer-uploader -s -p 64 Bin-NueXini-$time.zip 2>&1 | tee cowtransfer.log
 cp -rf Bin-NueXini-$time.zip ./nuexini/
 echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 

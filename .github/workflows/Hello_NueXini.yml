@@ -74,7 +74,7 @@ jobs:
         
     - name: Hello NueXini
       run: |
-        zip -q -r Bin-NueXini-$(TZ=UTC-8 date "+%H%M").zip ./nuexini/bin/
+        zip -q -r Bin-NueXini.zip ./nuexini/bin/
         ./sh/z.cowtransfer.sh
         ./cowtransfer-uploader -s -p 64 Bin-NueXini.zip 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
