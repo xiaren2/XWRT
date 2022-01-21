@@ -30,7 +30,7 @@ cp -rf ../arch.cfg ./.config
 
 cat ../app.cfg | while read app
 do
-	make $app/compile V=s >> ./bin/make.log 2>&1
+	make $app/compile V=s
 done
 
 
