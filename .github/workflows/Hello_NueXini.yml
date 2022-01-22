@@ -42,7 +42,7 @@ jobs:
         make defconfig
         make download -j8
         rm -rf $(find ./dl/ -size -1024c)
-        make -j8 || make -j1 V=sc >> ./make-error.log 2>&1
+        make -j8 || make -j1 V=sc > ./make-error.log 2>&1
     
     - name: Upload error log
       uses: actions/upload-artifact@master
