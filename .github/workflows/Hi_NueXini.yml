@@ -28,13 +28,10 @@ jobs:
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get -y clean
 
-    - name: Clone
+    - name: Build
       run: |
         releasetag=$(cat ./config/releasetag.list | awk 'NR==1')
         git clone $releasetag dd
-        
-    - name: Update & Install feeds
-      run: |
         chmod +x ./sh/*.sh
         cd dd
         ../sh/Hello_NueXini.sh
